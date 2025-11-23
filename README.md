@@ -6,8 +6,32 @@
 - Geovani Santos De Brito
 - João Antonio Amaral Blanco
 
-## 🎯 Objetivo
+## Objetivo
 Desenvolver e corrigir colaborativamente um algoritmo em Portugol. O fluxo de trabalho consistiu em um membro (Natan) submeter um código inicial com erros, e os demais (Geovani e João) tentarem corrigi-lo e finalizá-lo sequencialmente, utilizando o Git com chaves SSH para versionamento.
+
+## O Projeto: Calculadora Lógica Proposicional
+O software desenvolvido é um interpretador de expressões lógicas. Ele permite que o usuário digite uma fórmula lógica complexa e calcula o valor verdade final (0 ou 1).
+
+### Funcionalidades:
+* **Parsing de Expressão:** Lê uma *string* contendo a expressão lógica.
+* **Identificação de Variáveis:** Detecta letras (ex: `p`, `q`, `a`) e solicita ao usuário o valor verdade de cada uma (Verdadeiro/Falso).
+* **Ordem de Precedência:** O algoritmo resolve a equação respeitando a hierarquia matemática correta:
+    1.  Parênteses (dos mais internos para os externos);
+    2.  Negação (`~`);
+    3.  Conjunção (`^`) e Disjunção (`V`);
+    4.  Condicional (`>`) e Bicondicional (`<>`).
+* **Tratamento de Vetores:** Utiliza manipulação direta de memória (vetores por referência) para resolver a equação passo a passo sem perder a integridade dos dados.
+
+### Operadores Suportados:
+| Símbolo | Operação | Lógica |
+| :---: | :--- | :--- |
+| `~` | Negação | NÃO |
+| `^` | Conjunção | E |
+| `V` | Disjunção | OU |
+| `>` | Condicional | Se... então |
+| `<>` | Bicondicional | Se e somente se |
+
+---
 
 ## ⚙️ Configuração do Git com Chave SSH
 Para interagir com o repositório usando SSH (sem precisar de senha a cada `push` ou `pull`), cada membro precisa configurar sua chave. O processo é feito uma vez por computador.
@@ -120,6 +144,6 @@ git commit -m "Adicionando código base não funcional ainda"
 ```
 
 
-## 📝 Observações
+## Observações
 
 Cada etapa foi realizada por apenas um integrante por vez, respeitando a ordem de `pull`, `commit` e `push`, para simular um fluxo de trabalho sequencial e garantir a integridade do código no branch `main`.
