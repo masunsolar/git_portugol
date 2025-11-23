@@ -107,11 +107,12 @@ A partir de agora, todos os comandos `git push`, `git pull` e `git fetch` para e
 - **Ação:**
 
 ### 3. João Antonio Amaral Blanco (Finalização)
-- **Configuração:** 
-- **Contribuição:** 
-- **Ação:** 
-- **Mudanças:** [**João deve descrever aqui o que ele corrigiu ou finalizou. Ex: Finalizada a função Y e corrigido o loop principal que estava em 'undefined'**]
-- **Ação:** 
+- **Configuração: Preparei o ambiente e deixei o código pronto para os testes finais.** 
+- **Contribuição: Revistei a lógica principal e finalizei partes que estavam incompletas.** 
+- **Ação: Analisei os trechos que estavam causando erro e corrigi a estrutura da expressão lógica.** 
+- **Mudanças:** [**Removi partes que estavam com erro, melhorei a função de limpar, reorganizei os operadores lógicos (>, <>, V, ^) e ajustei a substituição das variáveis por valores.**]
+- **Ação: Finalizei a lógica do código e deixei tudo funcionando para a entrega.** 
+
 
 ---
 

@@ -11,7 +11,7 @@ programa {
     escreva ("~: Negação \n")
     escreva(">: Condicional \n")
     escreva("<>: Bicondicional \n")
-    escreva("V: Disjunção \n") // Corrigi o nome do operador 'V' para 'Disjunção'
+    escreva("V: Disjunção \n") 
     escreva("^: Conjunção \n")
     escreva("1: Verdadeiro \n")
     escreva("0: Falso \n\n")
@@ -28,142 +28,49 @@ programa {
           escreva("Qual o valor de ", cont[i], " (1 para Verdadeiro, 0 para Falso): ")
           leia (valor)
         } enquanto (valor != '1' e valor != '0') 
-        cont[i] = valor // Substitui a variável pela entrada de valor
-      }
-    }//ta funcionando
-    //coisar parenteszesxezs
-    para(inteiro i = 0; i < t.numero_caracteres(expre); i++) {
-      se(cont[i]=='('){
-        para(inteiro j=i; j<t.numero_caracteres(expre); j++){
-          conds(cont, j)
-          cont=limpando(cont, expre)
-          escreva(cont, "\n\n")
-        }
-        cont=limpando(cont, expre)
-        escreva(cont, "\n\n")
-      }
-    }// falta arrumar
-
-    // Avaliação da expressão
-    para(inteiro i = 0; i < t.numero_caracteres(expre); i++) {
-      se(i>0){
-        se(cont[i-1]=='~'){
-          se(cont[i]=='1'){
-            cont[i]=' '
-            cont[i-1]='0'
-          }senao{
-            cont[i]=' '
-            cont[i-1]='1'
-          }
-        }
-        cont=limpando(cont, expre)
-        escreva(cont, "\n\n")
+        cont[i] = valor 
       }
     }
-
-    para(inteiro i = 0; i < t.numero_caracteres(expre); i++) {
-      caracter valor1, valor2
-
-      conds(cont, i)
-
-      cont=limpando(cont, expre)
-      escreva(cont, "\n\n")
-    }
-  
-    // Exibe o resultado
-    escreva("Resultado da expressão: ")
-    para(inteiro i = 0; i < t.numero_caracteres(expre); i++) {
-      se(cont[i] != ' ' e cont[i]!= 'u') {
-        escreva(cont[i]) // Corrigi para imprimir apenas os caracteres relevantes
-      }
-    }
-    escreva("\n")
   }
-
-  funcao caracter conds(caracter cont[], inteiro i){
-    caracter valor1, valor2
-
-      se(cont[i] == '>') {
-        valor1 = cont[i-1]
-        valor2 = cont[i+1]
-        
-        cont[i+1] = condicional(valor1, valor2) // Ajuste para chamada da função de condicional
-        cont[i-1]=' '
-        cont[i]= ' '
-      }
-
-      se(cont[i] == '<') {
-        valor1 = cont[i-1]
-        valor2 = cont[i+1]
-        cont[i+2] = bicondicional(valor1, valor2)
-        cont[i+1] = ' ' // Remove o segundo caractere '>'
-        cont[i-1]=' '
-        cont[i]= ' '
-      }
-
-      se(cont[i] == 'V' ou cont[i] == 'v') {
-        valor1 = cont[i-1]
-        valor2 = cont[i+1]
-        cont[i+1] = disjuncao(valor1, valor2) // Ajuste para disjunção
-        cont[i-1]=' '
-        cont[i]= ' '
-      }
-
-      se(cont[i] == '^') {
-        valor1 = cont[i-1]
-        valor2 = cont[i+1]
-        cont[i+1] = conjuncao(valor1, valor2) // Ajuste para conjunção
-        cont[i-1]=' '
-        cont[i]= ' '
-      }
-      retorne cont
-  }
+// Até aqui funciona --------------------------------------------------------------------------------------------------------------
 
   // Função para o condicional (>)
   funcao caracter condicional(caracter valor1, caracter valor2) {
-   se(valor1 == '1' e valor2 == '0') {
-      retorne '0'
-    } senao {
-      retorne '1'
-    }
+    se(valor1 == '1' e valor2 == '0') { retorne '0'} senao { retorne '1'}
   }
 
   // Função para o bicondicional (<>)
   funcao caracter bicondicional(caracter valor1, caracter valor2) {
-    se((valor1 == '1' e valor2 == '1') ou (valor1 == '0' e valor2 == '0')) {
-      retorne '1'
-    } senao {
-      retorne '0'
-    }
+    se(valor1==valor2) { retorne '1'} senao { retorne '0'}
   }
 
   // Função para a disjunção (V)
   funcao caracter disjuncao(caracter valor1, caracter valor2) {
-    se(valor1 == '1' ou valor2 == '1') {
-      retorne '1'
-    } senao {
-      retorne '0'
-    }
+    se(valor1 == '1' ou valor2 == '1') { retorne '1'} senao { retorne '0'}
   }
 
   // Função para a conjunção (^)
   funcao caracter conjuncao(caracter valor1, caracter valor2) {
-    se(valor1 == '1' e valor2 == '1') {
-      retorne '1'
-    } senao {
-      retorne '0'
-    }
+    se(valor1 == '1' e valor2 == '1') { retorne '1'} senao { retorne '0'}
   }
 
-  funcao caracter limpando(caracter cont[], cadeia expre){
-    caracter limp[100]
-    inteiro j=0
-    para(inteiro i = 0; i < t.numero_caracteres(expre); i++) {
-      se(cont[i] != ' ') {
-        limp[j]=cont[i]
+  // --- FUNÇÃO LIMPAR MELHORADA ---
+  funcao vazio limpando(caracter &vetor[]) {
+    caracter temp[100]
+    // Inicializa temp com espaços
+    para(inteiro k=0; k<100; k++) { temp[k] = ' ' }
+
+    inteiro j = 0
+    para(inteiro i = 0; i < 100; i++) {
+      se(vetor[i] != ' ' e vetor[i] != 0) {
+        temp[j] = vetor[i]
         j++
       }
     }
-    retorne limp
-  }
+      
+    // Devolve para o original
+    para(inteiro i = 0; i < 100; i++) {
+      se(i < j) { vetor[i] = temp[i] } senao { vetor[i] = ' ' }
+    }
+  }
 }
