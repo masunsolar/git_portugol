@@ -99,19 +99,20 @@ A partir de agora, todos os comandos `git push`, `git pull` e `git fetch` para e
 - **Contribuição:** Criou o arquivo `algoritmo.por` e realizou o "Commit Inicial". Este commit continha a estrutura base do algoritmo, mas com **erros propositais** que serviram de ponto de partida para a atividade de correção dos demais membros.
 - **Ação:** Fez o primeiro `git push` para o `main`.
 
-### 2. Geovani Santos De Brito (Primeira Correção)
-- **Configuração:** 
-- **Contribuição:** 
-- **Ação:** 
-- **Mudanças:** [**Geovani deve descrever aqui o que ele corrigiu. Ex: Corrigida a lógica da função X, que estava retornando 'undefined'**]
-- **Ação:**
-
-### 3. João Antonio Amaral Blanco (Finalização)
+### 2. João Antonio Amaral Blanco (Primeira Correção)
 - **Configuração: Preparei o ambiente e deixei o código pronto para os testes finais.** 
 - **Contribuição: Revistei a lógica principal e finalizei partes que estavam incompletas.** 
 - **Ação: Analisei os trechos que estavam causando erro e corrigi a estrutura da expressão lógica.** 
 - **Mudanças:** [**Removi partes que estavam com erro, melhorei a função de limpar, reorganizei os operadores lógicos (>, <>, V, ^) e ajustei a substituição das variáveis por valores.**]
 - **Ação: Finalizei a lógica do código e deixei tudo funcionando para a entrega.** 
+
+### 3. Geovani Santos De Brito (Finalização)
+- **Configuração: Recebi a versão do código já alterada pelo colega e preparei o ambiente para continuar a implementação da avaliação lógica, garantindo que todas as partes pendentes pudessem ser finalizadas.** 
+- **Contribuição: Reorganizei e completei a lógica que ainda estava incompleta, incluindo o processamento correto de parênteses e a ordem de execução dos operadores lógicos.** 
+- **Ação: Analisei os trechos que ainda apresentavam falhas, identifiquei inconsistências na interpretação da expressão e corrigi a execução dos operadores e a forma como o vetor era manipulado.** 
+- **Mudanças:** [**Geovani deve descrever aqui o que ele corrigiu. Ex: Corrigida a lógica da função X, que estava retornando 'undefined'**]
+- **Ação: Implementei a função resolver_logica, adicionei a resolução dos parênteses do mais interno para o mais externo, ajustei a precedência dos operadores (~, ^, V, >, <>), corrigi o tratamento das variáveis, criei as funções operar e operar_bicondicional e refinei a função limpando para manter o vetor sempre organizado.**
+
 
 
 ---
