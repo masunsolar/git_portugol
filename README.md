@@ -107,11 +107,11 @@ A partir de agora, todos os comandos `git push`, `git pull` e `git fetch` para e
 - **Ação: Finalizei a lógica do código e deixei tudo funcionando para a entrega.** 
 
 ### 3. Geovani Santos De Brito (Finalização)
-- **Configuração: Recebi a versão do código já alterada pelo colega e preparei o ambiente para continuar a implementação da avaliação lógica, garantindo que todas as partes pendentes pudessem ser finalizadas.** 
-- **Contribuição: Reorganizei e completei a lógica que ainda estava incompleta, incluindo o processamento correto de parênteses e a ordem de execução dos operadores lógicos.** 
-- **Ação: Analisei os trechos que ainda apresentavam falhas, identifiquei inconsistências na interpretação da expressão e corrigi a execução dos operadores e a forma como o vetor era manipulado.** 
-- **Mudanças:** [**Geovani deve descrever aqui o que ele corrigiu. Ex: Corrigida a lógica da função X, que estava retornando 'undefined'**]
-- **Ação: Implementei a função resolver_logica, adicionei a resolução dos parênteses do mais interno para o mais externo, ajustei a precedência dos operadores (~, ^, V, >, <>), corrigi o tratamento das variáveis, criei as funções operar e operar_bicondicional e refinei a função limpando para manter o vetor sempre organizado.**
+- **Configuração: Clonou o repositório (git clone) para obter a primeira versão, esperou a última versão corrigida por João e deu git pull.** 
+- **Contribuição: Reorganizou e completou a lógica que ainda estava incompleta, incluindo o processamento correto de parênteses e a ordem de execução dos operadores lógicos.** 
+- **Ação: Analisou os trechos que ainda apresentavam falhas, Corrigiu as falhas restantes e garantiu a ordem de execução dos operadores e parênteses.** 
+- **Mudanças:** **Implementou a função `resolver_logica`, a estrutura para resolução recursiva de parênteses (do mais interno ao mais externo) e as funções auxiliares `operar` e `operar_bicondicional`. Refinou a função `limpando` para manipulação correta do vetor por referência, garantindo a organização do estado da expressão a cada passo.**
+- **Ação: Fez o `git add`, `git commit` e `git push` final**
 
 
 
@@ -145,6 +145,23 @@ git add .
 git commit -m "Adicionando código base não funcional ainda"
 ```
 
+### Comandos de Geovani (Finalização)
+```bash
+# (Após a criação do repositório no GitHub)
+# Adiciona o repositório remoto antes da atualização
+git clone git@github.com:masunsolar/git_portugol.git
+
+# Puxa os arquivos da atualização de João e abre a pasta
+cd ./git_portugol
+git pull
+
+# (Modificações e finalização do código e README)
+
+# adicionar, commitar e enviar os arquivos modificados
+git add .
+git commit -m "commit final"
+git push
+```
 
 ## Observações
 
