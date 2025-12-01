@@ -103,17 +103,17 @@ A partir de agora, todos os comandos `git push`, `git pull` e `git fetch` para e
 - **Configuração: Clonei o repositório do Natan usando a URL SSH (`git clone git@github.com:masunsolar/git_portugol.git`) e deixei todo o ambiente pronto para começar a testar e desenvolver.** 
 - **Contribuição:  Nessa etapa eu foquei em deixar a lógica do avaliador mais estável. Corrigi alguns bugs que travavam a execução e garanti que a estrutura dos dados estivesse funcionando direitinho antes de mexer com a parte de parênteses.
 ** 
-- **Ação: Revisei a lógica principal, corrigindo trechos que estavam causando erros e interrompiam o fluxo. Arrumei partes da sintaxe e da estrutura da expressão para os operadores serem lidos corretamente. E ajustei o processo de avaliação para que as variáveis fossem substituídas por 1 ou 0 antes de calcular qualquer operação.** 
+- **Ação portugol: Revisei a lógica principal, corrigindo trechos que estavam causando erros e interrompiam o fluxo. Arrumei partes da sintaxe e da estrutura da expressão para os operadores serem lidos corretamente. E ajustei o processo de avaliação para que as variáveis fossem substituídas por 1 ou 0 antes de calcular qualquer operação.** 
 - **Mudanças:** **Refinei a função que substitui as variáveis pelos valores e corrige a forma como a expressão ela montada, garantindo que o vetor de tokens ficasse consistente para permitir testar o fluxo completo da avaliação.
 **
-- **Ação: Enviei a primeira leva de correções com `git add`, `git commit` e `git push`** 
+- **Ação git: Enviei a primeira leva de correções com `git add`, `git commit` e `git push`** 
 
 ### 3. Geovani Santos De Brito (Finalização)
 - **Configuração: Clonou o repositório (git clone) para obter a primeira versão, esperou a última versão corrigida por João e deu git pull.** 
 - **Contribuição: Reorganizou e completou a lógica que ainda estava incompleta, incluindo o processamento correto de parênteses e a ordem de execução dos operadores lógicos.** 
-- **Ação: Analisou os trechos que ainda apresentavam falhas, Corrigiu as falhas restantes e garantiu a ordem de execução dos operadores e parênteses.** 
+- **Ação portugol: Analisou os trechos que ainda apresentavam falhas, Corrigiu as falhas restantes e garantiu a ordem de execução dos operadores e parênteses.** 
 - **Mudanças:** **Implementou a função `resolver_logica`, a estrutura para resolução recursiva de parênteses (do mais interno ao mais externo) e as funções auxiliares `operar` e `operar_bicondicional`. Refinou a função `limpando` para manipulação correta do vetor por referência, garantindo a organização do estado da expressão a cada passo.**
-- **Ação: Fez o `git add`, `git commit` e `git push` final**
+- **Ação git: Fez o `git add`, `git commit` e `git push` final**
 
 
 
