@@ -100,11 +100,13 @@ A partir de agora, todos os comandos `git push`, `git pull` e `git fetch` para e
 - **Ação:** Fez o primeiro `git push` para o `main`.
 
 ### 2. João Antonio Amaral Blanco (Primeira Correção)
-- **Configuração: Preparei o ambiente e deixei o código pronto para os testes finais.** 
-- **Contribuição: Revistei a lógica principal e finalizei partes que estavam incompletas.** 
-- **Ação: Analisei os trechos que estavam causando erro e corrigi a estrutura da expressão lógica.** 
-- **Mudanças:** [**Removi partes que estavam com erro, melhorei a função de limpar, reorganizei os operadores lógicos (>, <>, V, ^) e ajustei a substituição das variáveis por valores.**]
-- **Ação: Finalizei a lógica do código e deixei tudo funcionando para a entrega.** 
+- **Configuração: Clonei o repositório do Natan usando a URL SSH (`git clone git@github.com:masunsolar/git_portugol.git`) e deixei todo o ambiente pronto para começar a testar e desenvolver.** 
+- **Contribuição:  Nessa etapa eu foquei em deixar a lógica do avaliador mais estável. Corrigi alguns bugs que travavam a execução e garanti que a estrutura dos dados estivesse funcionando direitinho antes de mexer com a parte de parênteses.
+** 
+- **Ação: Revisei a lógica principal, corrigindo trechos que estavam causando erros e interrompiam o fluxo. Arrumei partes da sintaxe e da estrutura da expressão para os operadores serem lidos corretamente. E ajustei o processo de avaliação para que as variáveis fossem substituídas por 1 ou 0 antes de calcular qualquer operação.** 
+- **Mudanças:** **Refinei a função que substitui as variáveis pelos valores e corrige a forma como a expressão ela montada, garantindo que o vetor de tokens ficasse consistente para permitir testar o fluxo completo da avaliação.
+**
+- **Ação: Enviei a primeira leva de correções com `git add`, `git commit` e `git push`** 
 
 ### 3. Geovani Santos De Brito (Finalização)
 - **Configuração: Clonou o repositório (git clone) para obter a primeira versão, esperou a última versão corrigida por João e deu git pull.** 
@@ -143,6 +145,27 @@ git pull
 # Modifiquei o repositório incial e adicionei os arquivos
 git add .
 git commit -m "Adicionando código base não funcional ainda"
+```
+
+### Comandos de joao (Primeira correção)
+```bash
+# Clonar o repositório do Natan
+git clone git@github.com:masunsolar/git_portugol.git
+
+# Acessar a pasta do projeto
+cd ./git_portugol
+
+# (Realização das modificações no código em 'algoritmo.por')
+
+# Adicionar o arquivo modificado ao stage
+git add algoritmo.por
+
+# Commitar as alterações com uma mensagem descritiva
+git commit -m "Correção 1: Ajuste de limpeza, lógica e operadores centrais, substituindo variáveis."
+
+# Enviar as correções para o repositório remoto
+git push origin main
+
 ```
 
 ### Comandos de Geovani (Finalização)
