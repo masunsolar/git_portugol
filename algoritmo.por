@@ -6,6 +6,10 @@ programa {
     cadeia expre 
     caracter cont[100], valor
 
+    para(inteiro i = 0; i < 100; i++) {
+        cont[i] = ' '
+    }
+
     escreva("A expressão deve conter no máximo 100 caracteres \n")
     escreva("Utilize os seguintes caracteres (ATENÇÃO: não utilizar espaço): \n")
     escreva ("~: Negação \n")
@@ -18,12 +22,12 @@ programa {
     escreva ("Informe a expressão \n")
     leia (expre)
     
-    // Quebra a expressão e substitui variáveis por valores
+    // Quebra a expressão e coloca no vetor
     para(inteiro i = 0; i < t.numero_caracteres(expre); i++) {
       cont[i] = t.obter_caracter(expre, i)
 
-      // Ajuste da condição para aceitar letras (maiúsculas e minúsculas) e garantir que apenas as letras sejam substituídas
-      se((cont[i]>='a' e cont[i]<='z' e cont[i]!='v') e (cont[i]>='A' e cont[i]>='Z' e cont[i]!='V')) {
+      // Verifica se é letra minúscula OU maiúscula (ignorando V de disjunção)
+      se( (cont[i]>='a' e cont[i]<='z' e cont[i]!='v') ou (cont[i]>='A' e cont[i]<='Z' e cont[i]!='V') ) {
         faca {
           escreva("Qual o valor de ", cont[i], " (1 para Verdadeiro, 0 para Falso): ")
           leia (valor)
@@ -31,8 +35,9 @@ programa {
         cont[i] = valor 
       }
     }
+
     // -------------------------------------------------------------
-    // ETAPA 1: RESOLVER PARÊNTESES (DO MAIS INTERNO PARA O EXTERNO)
+    // ETAPA 1: RESOLVER PARÊNTESES 
     // -------------------------------------------------------------
     logico tem_parenteses = verdadeiro
       
@@ -41,7 +46,6 @@ programa {
       inteiro fecha = -1
       inteiro abre = -1
 
-      // Acha o primeiro ')'
       para(inteiro i = 0; i < 100; i++) {
         se(cont[i] == ')') {
           fecha = i
@@ -50,7 +54,6 @@ programa {
         }
       }
 
-      // Se achou ')', volta para achar o '('
       se(tem_parenteses) {
         para(inteiro i = fecha; i >= 0; i--) {
           se(cont[i] == '(') {
@@ -59,45 +62,44 @@ programa {
           }
         }
               
-        // Resolve o que está DENTRO dos parênteses
         resolver_logica(cont, abre + 1, fecha - 1)
 
-        // O resultado fica na posição logo após o '(', movemos para a posição do '('
         cont[abre] = cont[abre+1] 
-        // Limpa o resto dos parênteses
+        
         para(inteiro k = abre + 1; k <= fecha; k++) {
           cont[k] = ' '
         }
-        limpando(cont) // Organiza o vetor
+        limpando(cont)
       }
     }
 
     // ---------------------------------------------------------
-    // ETAPA 2: RESOLVER O RESTANTE (SEM PARÊNTESES)
+    // ETAPA 2: RESOLVER O RESTANTE
     // ---------------------------------------------------------
     resolver_logica(cont, 0, 99) 
     limpando(cont)
 
-    // EXIBE RESULTADO FINAL
+    // EXIBE RESULTADO FINAL COM COLCHETES PARA CONFERÊNCIA
     escreva("\n-----------------------------\n")
-    escreva("Resultado Final: ", cont[0], "\n")
+    escreva("Resultado Final: [", cont[0], "]\n") 
     escreva("-----------------------------\n")
   }
 
   // =============================================================
-  // FUNÇÃO PRINCIPAL DE LÓGICA (Substitui a antiga 'conds')
+  // FUNÇÃO LÓGICA
   // =============================================================
   funcao resolver_logica(caracter &vetor[], inteiro inicio_fatia, inteiro fim_fatia) {     
     // 1. NEGAÇÃO (~)
     para(inteiro i = inicio_fatia; i <= fim_fatia; i++) {
       se(vetor[i] == '~') {
         inteiro alvo = i + 1
-        enquanto(alvo <= fim_fatia e vetor[alvo] == ' ') { alvo++ } // Pula espaços
+        enquanto(alvo <= fim_fatia e vetor[alvo] == ' ') { alvo++ } 
                 
+        // Se o alvo for '0', vira '1'. Qualquer outra coisa (inclusive '1') vira '0'
         se(vetor[alvo] == '0') { vetor[i] = '1' } 
         senao { vetor[i] = '0' }
                 
-        vetor[alvo] = ' ' // Apaga o número usado
+        vetor[alvo] = ' ' 
       }
     }
 
@@ -114,7 +116,6 @@ programa {
     // 4. CONDICIONAL (>)
     para(inteiro i = inicio_fatia; i <= fim_fatia; i++) {
       se(vetor[i] == '>') {
-        // Verifica se é bicondicional (<>) checando o anterior
         logico eh_bicondicional = falso
         inteiro anterior = i - 1
         enquanto(anterior >= inicio_fatia e vetor[anterior] == ' ') { anterior-- }
@@ -140,7 +141,7 @@ programa {
     }
   }
 
-  // --- AJUDANTES PARA CALCULAR VIZINHOS ---
+  // --- FUNÇÕES AUXILIARES ---
   funcao operar(caracter &vetor[], inteiro pos_op, caracter op, inteiro min, inteiro max) {
     inteiro esq = pos_op - 1
     inteiro dir = pos_op + 1
@@ -148,7 +149,6 @@ programa {
     enquanto(esq >= min e vetor[esq] == ' ') { esq-- }
     enquanto(dir <= max e vetor[dir] == ' ') { dir++ }
 
-    // Segurança para não acessar índice inválido
     se (esq >= min e dir <= max) {
       caracter v1 = vetor[esq]
       caracter v2 = vetor[dir]
@@ -182,35 +182,34 @@ programa {
     }
   }
 
-  // Função para o condicional (>)
   funcao caracter condicional(caracter valor1, caracter valor2) {
     se(valor1 == '1' e valor2 == '0') { retorne '0'} senao { retorne '1'}
   }
 
-  // Função para o bicondicional (<>)
   funcao caracter bicondicional(caracter valor1, caracter valor2) {
     se(valor1==valor2) { retorne '1'} senao { retorne '0'}
   }
 
-  // Função para a disjunção (V)
   funcao caracter disjuncao(caracter valor1, caracter valor2) {
     se(valor1 == '1' ou valor2 == '1') { retorne '1'} senao { retorne '0'}
   }
 
-  // Função para a conjunção (^)
   funcao caracter conjuncao(caracter valor1, caracter valor2) {
     se(valor1 == '1' e valor2 == '1') { retorne '1'} senao { retorne '0'}
   }
 
-  // --- FUNÇÃO LIMPAR MELHORADA ---
+  // ==========================================================
+  // 3. FUNÇÃO LIMPAR SIMPLIFICADA (Correção vital)
+  // ==========================================================
   funcao vazio limpando(caracter &vetor[]) {
     caracter temp[100]
-    // Inicializa temp com espaços
+    // Limpa temp
     para(inteiro k=0; k<100; k++) { temp[k] = ' ' }
 
     inteiro j = 0
     para(inteiro i = 0; i < 100; i++) {
-      se(vetor[i] != ' ' e vetor[i] != 0) {
+      // Simplificado: se não for espaço, copia.
+      se(vetor[i] != ' ') {
         temp[j] = vetor[i]
         j++
       }
@@ -218,7 +217,7 @@ programa {
       
     // Devolve para o original
     para(inteiro i = 0; i < 100; i++) {
-      se(i < j) { vetor[i] = temp[i] } senao { vetor[i] = ' ' }
-    }
-  }
+      se(i < j) { vetor[i] = temp[i] } senao { vetor[i] = ' ' }
+    }
+  }
 }
